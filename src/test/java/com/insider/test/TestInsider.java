@@ -61,25 +61,28 @@ public class TestInsider {
     //Location - Istanbul, Turkey and department - Quality Assurance, check presence of
     //jobs list
 
-    public void seeAllQAJobs() throws InterruptedException {
+    public void seeAllQAJobs(){
         locator.moreButton.click();
         locator.careersLink.click();
-        //BrowserUtils.scrollToElement(locator.seeAllTeamsLink);
-        //   locator.seeAllTeamsLink.click();
-        JavascriptExecutor js=(JavascriptExecutor) Driver.getDriver();
 
-        js.executeScript("window.scrollBy(0,2600)");
-        Thread.sleep(3000);
-        locator.seeAllTeamsLink.click();
+         JavascriptExecutor js=(JavascriptExecutor) Driver.getDriver();
 
-        BrowserUtils.scrollToElement(locator.qualityAssuranceJobLink);
+         js.executeScript("window.scrollBy(0,2600)");
+         BrowserUtils.sleep(3);
+         locator.seeAllTeamsLink.click();
+
+         js.executeScript("window.scrollBy(0,1800)");
+         BrowserUtils.sleep(3);
         locator.qualityAssuranceJobLink.click();
-        locator.seeAllTeamsLink.click();
+
+         js.executeScript("window.scrollBy(0,100)");
+         BrowserUtils.sleep(3);
         locator.seeAllQAJobs.click();
 
+        js.executeScript("window.scrollBy(0,500)");
         selectLocation = new Select(locator.filterByLocation);
         selectLocation.selectByVisibleText("Istanbul, Turkey");
-        BrowserUtils.sleep(2000);
+        BrowserUtils.sleep(3);
         selectDepartment = new Select(locator.filterByDepartment);
         selectDepartment.selectByVisibleText("Quality Assurance");
 
@@ -147,7 +150,7 @@ public class TestInsider {
 
         locator.applyNowButton.sendKeys(Keys.ENTER);
 
-        BrowserUtils.switchWindowAndVerify(Driver.getDriver(), "jobs.lever.co/useinsider", "Insider. - Software Quality Assurance Engineer (Remote)");
+        BrowserUtils.switchWindowAndVerify(Driver.getDriver(), "jobs.lever.co/useinsider", "Insider. - Senior Software Quality Assurance Engineer - Remote");
 
     }
 
